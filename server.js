@@ -11,3 +11,7 @@ app.get("/", (req, res, next) => {
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
+
+// app.useでミドルウェア（サーバーがクライアントからのリクエストを受け取ってから、それにレスポンスを送るまでの間、特定のコードが実行される場所）を設定する
+// express.staticでHTMLが置いてあるフォルダを指定する
+app.use(express.static("public"));
