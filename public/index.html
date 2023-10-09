@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Top Page</title>
   </head>
+
   <body>
     <h1>Top Page</h1>
+    <button id="myButton">Fetch Data</button>
+    <script>
+      document
+        .getElementById("myButton")
+        .addEventListener("click", function () {
+          fetch("http://localhost:3000/api", {
+            headers: { "X-Token": "aBcDeF1234567890" },
+          });
+        });
+    </script>
   </body>
 </html>
