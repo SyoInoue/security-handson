@@ -1,7 +1,24 @@
+const crypto = require("crypto");
 const express = require("express");
 const api = require("./routes/api");
 const app = express();
 const port = 3000;
+
+// テンプレートエンジンの設定
+app.set("view engine", "ejs");
+
+// CSP検証用ページにviews/csp.ejsを利用する設定を追加
+app.get("/csp", (req, res) => {
+  const nonceValue = crypto.randomBytes(16).toString("base64");
+  res.header(
+    "Content-Security-Policy",
+    `script-src 'nonce-${nonceValue}' 'strict-dynamic';` +
+      "object-src 'none';" +
+      "base-url 'none'; " +
+      "require-trusted-types-for 'script';"
+  );
+  res.render("csp", { nonce: nonceValue });
+});
 
 // サーバーの起動
 app.listen(port, () => {
