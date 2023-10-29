@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>CSRF検証用ログインページ</title>
+  </head>
+  <body>
+    <form action="/csrf/login" method="POST">
+      <div>
+        <label for="username">UserName:</label>
+        <input type="text" id="username" name="username" />
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" />
+      </div>
+      <div>
+        <button type="submit">ログイン</button>
+      </div>
+    </form>
+  </body>
+</html>

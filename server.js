@@ -1,6 +1,7 @@
 const crypto = require("crypto");
 const express = require("express");
 const api = require("./routes/api");
+const csrf = require("./routes/csrf");
 const app = express();
 const port = 3000;
 
@@ -30,6 +31,7 @@ app.listen(port, () => {
 app.use(express.static("public"));
 
 app.use("/api", api);
+app.use("/csrf", csrf);
 
 // サーバーへgetメソッドでリクエストがあった場合の処理
 app.get("/", (req, res, next) => {
