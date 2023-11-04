@@ -4,6 +4,20 @@
     <title>CSRF検証ページ</title>
   </head>
   <body>
+    <script>
+      // Cookieからトークンを取得
+      const token = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("csrfToken="))
+        .split("=")[1];
+
+      // フォームにトークンを持つ非表示なinput要素を追加
+      const el = document.createElement("input");
+      el.type = "hidden";
+      el.name = "csrfToken";
+      el.value = token;
+      document.getElementById("remit").appendChild(el);
+    </script>
     <form id="remit" action="/csrf/remit" method="post">
       <div>
         <label for="to">送金先</label>

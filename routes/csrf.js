@@ -45,6 +45,11 @@ router.post("/remit", (req, res) => {
     res.send("ログインしていません");
     return;
   }
+  if (req.cookies["csrf_token"] !== req.body["csrf_token"]) {
+    res.status(400);
+    res.send("不正なリクエストです。");
+    return;
+  }
   // 本来はデータベースの書き換えなど重要な処理が行われる
   const { to, amount } = req.body;
   res.send(`${to}に${amount}円送金しました`);
